@@ -1,0 +1,62 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "bun@latest": {
+      "last_modified": "2024-02-19T01:51:04Z",
+      "resolved": "github:NixOS/nixpkgs/a332040396d7e3c47883e9c115c1da485712805e#bun",
+      "source": "devbox-search",
+      "version": "1.0.27",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/f7nri167bdcpz9jq4bg9rv3bfmbrmnga-bun-1.0.27"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/b75wlhjngwcxmd6sxl0704plq7ndrnar-bun-1.0.27"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/x2qn0f7mlb0q4kw5mhph2inpl986ywyl-bun-1.0.27"
+        }
+      }
+    },
+    "nodejs@latest": {
+      "last_modified": "2024-02-26T10:27:36Z",
+      "resolved": "github:NixOS/nixpkgs/fcea2b6260dd566c28c894b4207a5f2b56c2cba3#nodejs_21",
+      "source": "devbox-search",
+      "version": "21.6.2",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/n9xcy53g63rk8vwb2yx5fb7i72rprpd1-nodejs-21.6.2"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/mqvmpikgnk7bxvi977ysd0z81bjpflzj-nodejs-21.6.2"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/mdwxb1kdajvahhbpq3dhnaf3b01h7yb8-nodejs-21.6.2"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/va3sggfgfb709lm31bzvpjfyapjdy435-nodejs-21.6.2"
+        }
+      }
+    },
+    "sqlite@latest": {
+      "last_modified": "2024-02-20T22:56:03Z",
+      "resolved": "github:NixOS/nixpkgs/5eeded8e3518579daa13887297efa79f5be74b41#sqlite",
+      "source": "devbox-search",
+      "version": "3.45.1",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/ay9wvqp3p548p08symcy3q7avm86ck00-sqlite-3.45.1-bin"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/1j3xiiq0i2q69nmwi9ja99grnwlpqzgy-sqlite-3.45.1-bin"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/c9wndvymfnm4dcmi0bgy1lmljzx8dv4n-sqlite-3.45.1-bin"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/b3pbwqqpfllg2lxwhhv4iyw3m9xxbgld-sqlite-3.45.1-bin"
+        }
+      }
+    }
+  }
+}

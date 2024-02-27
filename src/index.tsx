@@ -4,16 +4,15 @@ import TodoItem from "./components/todo-item";
 import { db } from "./db/db";
 import { eq, sql } from "drizzle-orm/sql";
 import { todos } from "./db/schema";
+import { parse } from "hono/utils/cookie";
 
 const app = new Hono();
 
 app.get("/", async (c) => {
-    const res = await db.get(sql`select 'hello sqlite' as text`);
     return c.html(<Home />);
 });
 
 app.post("/api/todo", async (c) => {
-    console.log(await c.req.parseBody());
     const { content } = await c.req.parseBody();
 
     if (!content || typeof content !== "string") {
@@ -21,7 +20,6 @@ app.post("/api/todo", async (c) => {
     }
 
     const results = await db.insert(todos).values({ content }).returning();
-    console.log(results);
     if (!results || results.length < 1) {
         return c.html(<></>);
     }
@@ -40,7 +38,13 @@ app.get("/api/todos", async (c) => {
     );
 });
 app.delete("/api/todo", async (c) => {
-    const { todoId } = await c.req.json();
+    const body = await c.req.parseBody();
+
+    if (!body.todoId || typeof body.todoId !== "string") {
+        return c.body("TodoId is required and must be a string", 400);
+    }
+
+    const todoId = parseInt(body.todoId);
 
     await db.delete(todos).where(eq(todos.id, todoId));
 

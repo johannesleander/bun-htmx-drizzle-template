@@ -12,8 +12,19 @@ app.get("/", async (c) => {
     return c.html(<Home />);
 });
 
+app.get("/api/todos", async (c) => {
+    const results = await db.select().from(todos);
+
+    return c.html(
+        <>
+            {results.map((todo) => (
+                <TodoItem {...todo} />
+            ))}
+        </>
+    );
+});
 app.post("/api/todo", async (c) => {
-    const { content } = await c.req.parseBody();
+    const { content } = await c.req.json<{ content: string }>();
 
     if (!content || typeof content !== "string") {
         return c.body("Content is required and must be a string", 400);
@@ -26,25 +37,8 @@ app.post("/api/todo", async (c) => {
 
     return c.html(<TodoItem {...results[0]} />);
 });
-app.get("/api/todos", async (c) => {
-    const results = await db.select().from(todos);
-
-    return c.html(
-        <>
-            {results.map((todo) => (
-                <TodoItem {...todo} />
-            ))}
-        </>
-    );
-});
 app.delete("/api/todo", async (c) => {
-    const body = await c.req.parseBody();
-
-    if (!body.todoId || typeof body.todoId !== "string") {
-        return c.body("TodoId is required and must be a string", 400);
-    }
-
-    const todoId = parseInt(body.todoId);
+    const { todoId } = await c.req.json<{ todoId: number }>();
 
     await db.delete(todos).where(eq(todos.id, todoId));
 

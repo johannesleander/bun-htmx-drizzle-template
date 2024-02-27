@@ -24,6 +24,7 @@ export default function TodoItem({ id, content, timestamp }: Todo) {
                         value={id}
                         hx-delete="/api/todo"
                         hx-swap="delete"
+                        hx-ext="json-enc"
                         // hx-target={elId}
                         hx-trigger="click"
                     >

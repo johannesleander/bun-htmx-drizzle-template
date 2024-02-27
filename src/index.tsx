@@ -13,9 +13,15 @@ app.get("/", async (c) => {
 });
 
 app.post("/api/todo", async (c) => {
-    const { content } = await c.req.json();
+    console.log(await c.req.parseBody());
+    const { content } = await c.req.parseBody();
+
+    if (!content || typeof content !== "string") {
+        return c.body("Content is required and must be a string", 400);
+    }
 
     const results = await db.insert(todos).values({ content }).returning();
+    console.log(results);
     if (!results || results.length < 1) {
         return c.html(<></>);
     }
@@ -23,9 +29,7 @@ app.post("/api/todo", async (c) => {
     return c.html(<TodoItem {...results[0]} />);
 });
 app.get("/api/todos", async (c) => {
-    const results = await db.select();
-    console.log(results);
-    return c.html(<></>);
+    const results = await db.select().from(todos);
 
     return c.html(
         <>

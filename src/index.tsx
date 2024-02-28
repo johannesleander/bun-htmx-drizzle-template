@@ -1,10 +1,9 @@
 import { Hono } from "hono";
-import Home from "./components/home";
-import TodoItem from "./components/todo-item";
-import { db } from "./db/db";
-import { eq, sql } from "drizzle-orm/sql";
-import { todos } from "./db/schema";
-import { parse } from "hono/utils/cookie";
+import Home from "@ui/components/home";
+import TodoItem from "@ui/components/todo-item";
+import { db } from "@db/db";
+import { eq } from "drizzle-orm/sql";
+import { todos } from "@db/schema";
 
 const app = new Hono();
 

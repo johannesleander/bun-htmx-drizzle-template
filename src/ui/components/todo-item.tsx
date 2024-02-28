@@ -1,4 +1,4 @@
-import { Todo } from "../db/schema";
+import { Todo } from "@db/schema";
 
 export default function TodoItem({ id, content, timestamp }: Todo) {
     const elId = `todo-${id}`;

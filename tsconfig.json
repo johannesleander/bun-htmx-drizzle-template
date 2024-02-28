@@ -6,6 +6,10 @@
         "strict": true,
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
-        "checkJs": true
+        "checkJs": true,
+        "baseUrl": "./src",
+        "paths": {
+            "@*": ["*"]
+        }
     }
 }

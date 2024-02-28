@@ -3,7 +3,7 @@ import Home from "@ui/components/home";
 import TodoItem from "@ui/components/todo-item";
 import { db } from "@db/db";
 import { eq } from "drizzle-orm/sql";
-import { todos } from "@db/schema";
+import { Todo, todos } from "@db/schema";
 
 const app = new Hono();
 
@@ -23,11 +23,7 @@ app.get("/api/todos", async (c) => {
     );
 });
 app.post("/api/todo", async (c) => {
-    const { content } = await c.req.json<{ content: string }>();
-
-    if (!content || typeof content !== "string") {
-        return c.body("Content is required and must be a string", 400);
-    }
+    const { content } = await c.req.json<Pick<Todo, "content">>();
 
     const results = await db.insert(todos).values({ content }).returning();
     if (!results || results.length < 1) {

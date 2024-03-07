@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import Home from "@ui/components/home";
 import TodoItem from "@ui/components/todo-item";
 import { db } from "@db/db";
-import { eq } from "drizzle-orm/sql";
+import { eq, sql } from "drizzle-orm/sql";
 import { Todo, todos } from "@db/schema";
 
 const app = new Hono();

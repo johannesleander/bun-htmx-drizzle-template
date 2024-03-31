@@ -8,9 +8,4 @@ To run server:
 bun run dev
 ```
 
-To run JIT style generation
-```
-bun run tailwind:css
-```
-
 open http://localhost:3000

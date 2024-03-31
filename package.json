@@ -1,7 +1,6 @@
 {
     "scripts": {
-        "dev": "bun run --hot src/index.tsx",
-        "tailwind:watch": "tailwindcss -i ./src/ui/styles/input.css -o ./src/ui/styles/styles.css --watch",
+        "dev": "concurrently -n bun,tailwind-cli -c blue,magenta \"bun run --hot src/index.tsx\" \"tailwindcss -i ./src/ui/styles/input.css -o ./src/ui/styles/output.css --watch\" --kill-others",
         "db:introspect": "npx drizzle-kit introspect:sqlite --config ./drizzle.config.ts",
         "db:generate": "npx drizzle-kit generate:sqlite --config ./drizzle.config.ts",
         "db:migrate": "bun run src/db/migrate.ts",
@@ -14,6 +13,7 @@
     },
     "devDependencies": {
         "@types/bun": "latest",
+        "concurrently": "^8.2.2",
         "drizzle-orm": "^0.29.4",
         "tailwindcss": "latest"
     }

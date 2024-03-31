@@ -12,10 +12,7 @@ app.get("/", async (c) => {
     return c.html(<Home />);
 });
 
-app.get(
-    "/styles/tailwind.generated.css",
-    serveStatic({ path: "src/ui/styles/tailwind.generated.css" })
-);
+app.get("/styles.css", serveStatic({ path: "src/ui/styles/output.css" }));
 
 app.get("/api/todos", async (c) => {
     const results = await db.select().from(todos);

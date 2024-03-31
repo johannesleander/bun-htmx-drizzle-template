@@ -10,13 +10,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
                     crossorigin="anonymous"
                 ></script>
                 <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
-                {/* <script src="https://cdn.tailwindcss.com"></script> */}
-                <link
-                    // href={pathToFileURL(
-                    href="/styles/tailwind.generated.css"
-                    // ).toString()}
-                    rel="stylesheet"
-                ></link>
+                <link href="/styles.css" rel="stylesheet"></link>
             </head>
             <body class="bg-gray-800 text-white m-2">{children}</body>
         </html>
